@@ -34,18 +34,33 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
         
+        // Configure the view.
+        let skView = self.view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        // Create and configure the scene.
+        let scene = GameScene(size: skView.frame.size)
+        skView.presentScene(scene)
+        
+        
         motionManager = CMMotionManager()
         if let manager = motionManager {
             print("Motion manager is active")
             if manager.isDeviceMotionAvailable == true {
                 print("motion detected")
                 let q = OperationQueue()
-                manager.deviceMotionUpdateInterval = 5
+                manager.deviceMotionUpdateInterval = 10
                 manager.startDeviceMotionUpdates(to: q) {
                     (data: CMDeviceMotion?, error: Error?) in
                     if let mydata = data {
                         print("mydata", mydata.attitude)
                         print("pitch", mydata.attitude.pitch)
+                        print("roll", mydata.attitude.roll)
+                        print("yaw", mydata.attitude.yaw)
                     }
                 }
                 
