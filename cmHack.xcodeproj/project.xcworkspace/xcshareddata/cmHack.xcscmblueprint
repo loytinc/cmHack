@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "028881A291A48C32AD83640B904DB8ABE26247DC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0F4B3135479D4F5FDF8824C423A447BF98BC1BED" : 9223372036854775807,
+    "028881A291A48C32AD83640B904DB8ABE26247DC" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BA5C9E8C-7396-442B-BA8A-5AB0D7E0FC7E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0F4B3135479D4F5FDF8824C423A447BF98BC1BED" : "",
+    "028881A291A48C32AD83640B904DB8ABE26247DC" : "iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "cmHack",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "swiftThings\/cmHack\/cmHack.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/loyti\/iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "028881A291A48C32AD83640B904DB8ABE26247DC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/loyti\/GitHubRepoAssingment.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0F4B3135479D4F5FDF8824C423A447BF98BC1BED"
+    }
+  ]
+}
