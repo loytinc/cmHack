@@ -40,12 +40,14 @@ class GameViewController: UIViewController {
             if manager.isDeviceMotionAvailable == true {
                 print("motion detected")
                 let q = OperationQueue()
-                manager.deviceMotionUpdateInterval = 5
+                manager.deviceMotionUpdateInterval = 10
                 manager.startDeviceMotionUpdates(to: q) {
                     (data: CMDeviceMotion?, error: Error?) in
                     if let mydata = data {
                         print("mydata", mydata.attitude)
                         print("pitch", mydata.attitude.pitch)
+                        print("roll", mydata.attitude.roll)
+                        print("yaw", mydata.attitude.yaw)
                     }
                 }
                 
