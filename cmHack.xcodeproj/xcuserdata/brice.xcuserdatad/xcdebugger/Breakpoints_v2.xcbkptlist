@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cmHack/GameScene.swift"
-            timestampString = "526578194.579193"
+            timestampString = "526585499.627869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "addAsteroid()"
             landmarkType = "7">
          </BreakpointContent>

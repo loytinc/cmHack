@@ -18,9 +18,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var possibleAsteroids = ["asteroid-small.png", "asteroid-icon.png"]
     
+    var possibleCargo = ["cargo.png", "cargo2.png"]
+    
     let asteroidCategory:UInt32 = 0x1 << 1
     
     let bulletCategory:UInt32 = 0x1 << 0
+
+    let cargoCategory:UInt32 = 0x1 << 1
     
     override func didMove(to view: SKView) {
         
@@ -28,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var Btr = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spawnBullets), userInfo: nil, repeats: true)
         var Atr = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addAsteroid), userInfo: nil, repeats: true)
+        var Ctr = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addCargo), userInfo: nil, repeats: true)
 
         self.addChild(Player)
         
@@ -62,6 +67,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         actionArray.append(SKAction.move(to: CGPoint(x: position, y: -asteroid.size.height), duration: animationDuration))
         actionArray.append(SKAction.removeFromParent())
         asteroid.run(SKAction.sequence(actionArray))
+        
+    }
+    
+    func addCargo () {
+        
+        possibleCargo = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleCargo) as! [String]
+        let Cargo = SKSpriteNode(imageNamed: possibleCargo[0])
+        Cargo.zPosition = 0
+        let randomCargoPosition = GKRandomDistribution(lowestValue: -100, highestValue: 500)
+        let position = CGFloat(randomCargoPosition.nextInt())
+        Cargo.position = CGPoint(x: position, y: self.frame.size.height + Cargo.size.height)
+        Cargo.physicsBody = SKPhysicsBody(rectangleOf: Cargo.size)
+        Cargo.physicsBody?.isDynamic = true
+        Cargo.physicsBody?.categoryBitMask = asteroidCategory
+        Cargo.physicsBody?.contactTestBitMask = bulletCategory
+        Cargo.physicsBody?.collisionBitMask = 1
+        self.addChild(Cargo)
+        let animationDuration:TimeInterval = 15
+        var actionArray = [SKAction]()
+        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -Cargo.size.height), duration: animationDuration))
+        actionArray.append(SKAction.removeFromParent())
+        Cargo.run(SKAction.sequence(actionArray))
         
     }
     
