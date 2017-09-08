@@ -13,12 +13,11 @@
 		423694641F61C4A700979974 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423694631F61C4A700979974 /* GameScene.swift */; };
 		423694661F61C4A700979974 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423694651F61C4A700979974 /* GameViewController.swift */; };
 		423694691F61C4A700979974 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 423694671F61C4A700979974 /* Main.storyboard */; };
-		4236946B1F61C4A700979974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4236946A1F61C4A700979974 /* Assets.xcassets */; };
 		4236946E1F61C4A700979974 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4236946C1F61C4A700979974 /* LaunchScreen.storyboard */; };
 		423694791F61C4A700979974 /* cmHackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423694781F61C4A700979974 /* cmHackTests.swift */; };
 		423694841F61C4A700979974 /* cmHackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423694831F61C4A700979974 /* cmHackUITests.swift */; };
 		423694921F61F0F700979974 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 423694911F61F0F700979974 /* Spaceship.png */; };
-		423694941F61F47500979974 /* silverBullet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 423694931F61F47500979974 /* silverBullet.jpg */; };
+		42A9C77E1F62E66600D95A6E /* silverBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A9C77D1F62E66500D95A6E /* silverBullet.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +45,6 @@
 		423694631F61C4A700979974 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		423694651F61C4A700979974 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		423694681F61C4A700979974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4236946A1F61C4A700979974 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4236946D1F61C4A700979974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4236946F1F61C4A700979974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423694741F61C4A700979974 /* cmHackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cmHackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +54,8 @@
 		423694831F61C4A700979974 /* cmHackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cmHackUITests.swift; sourceTree = "<group>"; };
 		423694851F61C4A700979974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423694911F61F0F700979974 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Spaceship.png; path = Assets.xcassets/Spaceship.imageset/Spaceship.png; sourceTree = "<group>"; };
-		423694931F61F47500979974 /* silverBullet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = silverBullet.jpg; path = ../../images/silverBullet.jpg; sourceTree = "<group>"; };
+		42A9C77B1F62E4AF00D95A6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42A9C77D1F62E66500D95A6E /* silverBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = silverBullet.png; path = ../../images/silverBullet.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +112,10 @@
 				423694631F61C4A700979974 /* GameScene.swift */,
 				423694651F61C4A700979974 /* GameViewController.swift */,
 				423694671F61C4A700979974 /* Main.storyboard */,
-				4236946A1F61C4A700979974 /* Assets.xcassets */,
-				423694931F61F47500979974 /* silverBullet.jpg */,
 				4236946C1F61C4A700979974 /* LaunchScreen.storyboard */,
+				42A9C77B1F62E4AF00D95A6E /* Assets.xcassets */,
 				4236946F1F61C4A700979974 /* Info.plist */,
+				42A9C77D1F62E66500D95A6E /* silverBullet.png */,
 				423694911F61F0F700979974 /* Spaceship.png */,
 			);
 			path = cmHack;
@@ -252,9 +251,8 @@
 			files = (
 				423694691F61C4A700979974 /* Main.storyboard in Resources */,
 				423694601F61C4A700979974 /* GameScene.sks in Resources */,
-				4236946B1F61C4A700979974 /* Assets.xcassets in Resources */,
+				42A9C77E1F62E66600D95A6E /* silverBullet.png in Resources */,
 				4236946E1F61C4A700979974 /* LaunchScreen.storyboard in Resources */,
-				423694941F61F47500979974 /* silverBullet.jpg in Resources */,
 				423694921F61F0F700979974 /* Spaceship.png in Resources */,
 				423694621F61C4A700979974 /* Actions.sks in Resources */,
 			);

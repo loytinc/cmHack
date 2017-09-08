@@ -9,31 +9,34 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
     var Player = SKSpriteNode(imageNamed: "Spaceship.png")
     
+    var possibleAsteroids = ["asteroid-small.png", "asteroid-icon.png"]
+    
+    let asteroidCategory:UInt32 = 0x1 << 1
+    
+    let bulletCategory:UInt32 = 0x1 << 0
+    
     override func didMove(to view: SKView) {
         
         Player.position = CGPoint(x: self.size.width / 2,y: self.size.height / 5) // (x: CGFloat, y: CGFloat)
         
-        var Tr = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: Selector("spawnBullets"), userInfo: nil, repeats: true)
+        var Btr = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spawnBullets), userInfo: nil, repeats: true)
+        var Atr = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addAsteroid), userInfo: nil, repeats: true)
 
-        
         self.addChild(Player)
         
-        
-        
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        self.physicsWorld.contactDelegate = self
     }
     
-    
-    
-    
     func spawnBullets() {
-        var Bullet = SKSpriteNode(imageNamed: "silverBullet-1")
+        let Bullet = SKSpriteNode(imageNamed: "silverBullet.png")
         Bullet.zPosition = -5
         Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
         let action = SKAction.moveTo(y: self.size.height, duration: 0.6)
@@ -41,6 +44,27 @@ class GameScene: SKScene {
         self.addChild(Bullet)
     }
     
+    func addAsteroid () {
+        
+        possibleAsteroids = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAsteroids) as! [String]
+        let asteroid = SKSpriteNode(imageNamed: possibleAsteroids[0])
+        let randomAsteroidPosition = GKRandomDistribution(lowestValue: 0, highestValue: 500)
+        let position = CGFloat(randomAsteroidPosition.nextInt())
+        asteroid.position = CGPoint(x: position, y: self.frame.size.height + asteroid.size.height)
+        asteroid.physicsBody = SKPhysicsBody(rectangleOf: asteroid.size)
+        asteroid.physicsBody?.isDynamic = true
+        asteroid.physicsBody?.categoryBitMask = asteroidCategory
+        asteroid.physicsBody?.contactTestBitMask = bulletCategory
+        asteroid.physicsBody?.collisionBitMask = 0
+        self.addChild(asteroid)
+        let animationDuration = 5
+        var actionArray = [SKAction]()
+        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -asteroid.size.height), duration: TimeInterval(animationDuration)))
+        
+        actionArray.append(SKAction.removeFromParent())
+        asteroid.run(SKAction.sequence(actionArray))
+        
+    }
     
     func touchUp(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
