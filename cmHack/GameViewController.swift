@@ -10,29 +10,29 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-import CoreMotion
+//import CoreMotion
 
 class GameViewController: UIViewController {
 
-    var motionManager: CMMotionManager?
+//    var motionManager: CMMotionManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+//        if let view = self.view as! SKView? {
+//            // Load the SKScene from 'GameScene.sks'
+//            if let scene = SKScene(fileNamed: "GameScene") {
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//                
+//                // Present the scene
+//                view.presentScene(scene)
+//            }
+//            
+//            view.ignoresSiblingOrder = true
+//            
+//            view.showsFPS = true
+//            view.showsNodeCount = true
+//        }
         
         // Configure the view.
         let skView = self.view as! SKView
@@ -44,32 +44,35 @@ class GameViewController: UIViewController {
         
         // Create and configure the scene.
         let scene = GameScene(size: skView.frame.size)
+        scene.scaleMode = .aspectFill
+        scene.size = skView.bounds.size
+        
         skView.presentScene(scene)
         
         
-        motionManager = CMMotionManager()
-        if let manager = motionManager {
-            print("Motion manager is active")
-            if manager.isDeviceMotionAvailable == true {
-                print("motion detected")
-                let q = OperationQueue()
-                manager.deviceMotionUpdateInterval = 10
-                manager.startDeviceMotionUpdates(to: q) {
-                    (data: CMDeviceMotion?, error: Error?) in
-                    if let mydata = data {
-                        print("mydata", mydata.attitude)
-                        print("pitch", mydata.attitude.pitch)
-                        print("roll", mydata.attitude.roll)
-                        print("yaw", mydata.attitude.yaw)
-                    }
-                }
-                
-            } else {
-                print("probably in simulator")
-            }
-        } else {
-            print("NO Motion Manager Found")
-        }
+//        motionManager = CMMotionManager()
+//        if let manager = motionManager {
+//            print("Motion manager is active")
+//            if manager.isDeviceMotionAvailable == true {
+//                print("motion detected")
+//                let q = OperationQueue()
+//                manager.deviceMotionUpdateInterval = 2
+//                manager.startDeviceMotionUpdates(to: q) {
+//                    (data: CMDeviceMotion?, error: Error?) in
+//                    if let mydata = data {
+//                        print("mydata", mydata.attitude)
+//                        print("pitch", mydata.attitude.pitch)
+//                        print("roll", mydata.attitude.roll)
+//                        print("yaw", mydata.attitude.yaw)
+//                    }
+//                }
+//                
+//            } else {
+//                print("probably in simulator")
+//            }
+//        } else {
+//            print("NO Motion Manager Found")
+//        }
         
     }
 
