@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let Bullet = SKSpriteNode(imageNamed: "silverBullet.png")
         Bullet.zPosition = -5
         Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
-        let action = SKAction.moveTo(y: self.size.height, duration: 0.6)
+        let action = SKAction.moveTo(y: self.size.height + 100, duration: 1.0)
         Bullet.run(SKAction.repeatForever(action))
         self.addChild(Bullet)
     }
@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         possibleAsteroids = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAsteroids) as! [String]
         let asteroid = SKSpriteNode(imageNamed: possibleAsteroids[0])
-        let randomAsteroidPosition = GKRandomDistribution(lowestValue: 0, highestValue: 500)
+        let randomAsteroidPosition = GKRandomDistribution(lowestValue: -100, highestValue: 500)
         let position = CGFloat(randomAsteroidPosition.nextInt())
         asteroid.position = CGPoint(x: position, y: self.frame.size.height + asteroid.size.height)
         asteroid.physicsBody = SKPhysicsBody(rectangleOf: asteroid.size)
@@ -57,10 +57,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         asteroid.physicsBody?.contactTestBitMask = bulletCategory
         asteroid.physicsBody?.collisionBitMask = 0
         self.addChild(asteroid)
-        let animationDuration = 5
+        let animationDuration:TimeInterval = 5
         var actionArray = [SKAction]()
-        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -asteroid.size.height), duration: TimeInterval(animationDuration)))
-        
+        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -asteroid.size.height), duration: animationDuration))
         actionArray.append(SKAction.removeFromParent())
         asteroid.run(SKAction.sequence(actionArray))
         
