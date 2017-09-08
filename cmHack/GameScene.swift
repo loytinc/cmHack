@@ -75,7 +75,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         possibleCargo = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleCargo) as! [String]
         let Cargo = SKSpriteNode(imageNamed: possibleCargo[0])
         Cargo.zPosition = 0
-        let randomCargoPosition = GKRandomDistribution(lowestValue: -100, highestValue: 500)
+        let randomCargoPosition = GKPath(points: [Int:0], radius: 50, cyclical: true)
+//            GKRandomDistribution(lowestValue: -100, highestValue: 500)
         let position = CGFloat(randomCargoPosition.nextInt())
         Cargo.position = CGPoint(x: position, y: self.frame.size.height + Cargo.size.height)
         Cargo.physicsBody = SKPhysicsBody(rectangleOf: Cargo.size)
@@ -83,6 +84,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Cargo.physicsBody?.categoryBitMask = asteroidCategory
         Cargo.physicsBody?.contactTestBitMask = bulletCategory
         Cargo.physicsBody?.collisionBitMask = 1
+//        Cargo.physicsBody?.
+        
         self.addChild(Cargo)
         let animationDuration:TimeInterval = 15
         var actionArray = [SKAction]()
