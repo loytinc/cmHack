@@ -17,7 +17,6 @@
 		423694791F61C4A700979974 /* cmHackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423694781F61C4A700979974 /* cmHackTests.swift */; };
 		423694841F61C4A700979974 /* cmHackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423694831F61C4A700979974 /* cmHackUITests.swift */; };
 		423694921F61F0F700979974 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 423694911F61F0F700979974 /* Spaceship.png */; };
-<<<<<<< HEAD
 		427BD8DE1F62F3A300BF9A95 /* asteroid-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 427BD8DD1F62F3A300BF9A95 /* asteroid-small.png */; };
 		427BD8E01F62F3A700BF9A95 /* asteroid-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 427BD8DF1F62F3A700BF9A95 /* asteroid-icon.png */; };
 		427BD8E21F630C7B00BF9A95 /* cargoShip.png in Resources */ = {isa = PBXBuildFile; fileRef = 427BD8E11F630C7B00BF9A95 /* cargoShip.png */; };
@@ -28,8 +27,6 @@
 		427BD8ED1F63374200BF9A95 /* Explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 427BD8EB1F63374200BF9A95 /* Explosion.mp3 */; };
 		427BD8EE1F63374200BF9A95 /* Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 427BD8EC1F63374200BF9A95 /* Explosion.wav */; };
 		42A9C77E1F62E66600D95A6E /* silverBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A9C77D1F62E66500D95A6E /* silverBullet.png */; };
-=======
->>>>>>> master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +63,6 @@
 		423694831F61C4A700979974 /* cmHackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cmHackUITests.swift; sourceTree = "<group>"; };
 		423694851F61C4A700979974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423694911F61F0F700979974 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Spaceship.png; path = Assets.xcassets/Spaceship.imageset/Spaceship.png; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		427BD8DD1F62F3A300BF9A95 /* asteroid-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "asteroid-small.png"; path = "Assets.xcassets/asteroid-small.imageset/asteroid-small.png"; sourceTree = "<group>"; };
 		427BD8DF1F62F3A700BF9A95 /* asteroid-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "asteroid-icon.png"; path = "Assets.xcassets/asteroid-icon.imageset/asteroid-icon.png"; sourceTree = "<group>"; };
 		427BD8E11F630C7B00BF9A95 /* cargoShip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cargoShip.png; path = ../../images/cargoShip.png; sourceTree = "<group>"; };
@@ -78,8 +74,6 @@
 		427BD8EC1F63374200BF9A95 /* Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Explosion.wav; path = ../../images/Explosion.wav; sourceTree = "<group>"; };
 		42A9C77B1F62E4AF00D95A6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42A9C77D1F62E66500D95A6E /* silverBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = silverBullet.png; path = ../../images/silverBullet.png; sourceTree = "<group>"; };
-=======
->>>>>>> master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,10 +130,6 @@
 				423694631F61C4A700979974 /* GameScene.swift */,
 				423694651F61C4A700979974 /* GameViewController.swift */,
 				423694671F61C4A700979974 /* Main.storyboard */,
-<<<<<<< HEAD
-=======
-				4236946A1F61C4A700979974 /* Assets.xcassets */,
->>>>>>> master
 				4236946C1F61C4A700979974 /* LaunchScreen.storyboard */,
 				42A9C77B1F62E4AF00D95A6E /* Assets.xcassets */,
 				4236946F1F61C4A700979974 /* Info.plist */,
@@ -481,14 +471,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EGZ6H5EN2R;
 				INFOPLIST_FILE = cmHack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LOYTI.cmHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -497,14 +484,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EGZ6H5EN2R;
 				INFOPLIST_FILE = cmHack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LOYTI.cmHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
