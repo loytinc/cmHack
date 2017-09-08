@@ -15,7 +15,7 @@ import CoreMotion
 
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
      var motionManager: CMMotionManager?
@@ -31,7 +31,17 @@ class GameScene: SKScene {
     var turnSpeed: Double = 0
     
     
+    //create asteroids
+    var possibleAsteroids = ["asteroid-small.png", "asteroid-icon.png"]
+    
+    let asteroidCategory:UInt32 = 0x1 << 1
+    let bulletCategory:UInt32 = 0x1 << 0
+    
+    
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
+        
         player.position = CGPoint(x: self.size.width / 2,y: self.size.height / 5) // (x: CGFloat, y: CGFloat)
         
         var Tr = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(GameScene.spawnBullets), userInfo: nil, repeats: true)
@@ -67,6 +77,16 @@ class GameScene: SKScene {
         
         
         
+        
+        
+        // create category for them
+        let asteroidCategory:UInt32 = 0x1 << 1
+        
+        //create Asteroid Timer
+        var Atr = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addAsteroid), userInfo: nil, repeats: true)
+        
+        
+        
         motionManager = CMMotionManager()
         if let manager = motionManager {
             print("Motion manager is active")
@@ -77,23 +97,23 @@ class GameScene: SKScene {
                 manager.startDeviceMotionUpdates(to: q) {
                     (data: CMDeviceMotion?, error: Error?) in
                     if let mydata = data {
-                        print("mydata", mydata.attitude)
-                        print("pitch", mydata.attitude.pitch)
-                        print("roll", mydata.attitude.roll)
-                        print("yaw", mydata.attitude.yaw)
+//                        print("mydata", mydata.attitude)
+//                        print("pitch", mydata.attitude.pitch)
+//                        print("roll", mydata.attitude.roll)
+//                        print("yaw", mydata.attitude.yaw)
 
                         
-                        self.shipSpeed = mydata.attitude.roll * 750
+                        self.shipSpeed = (mydata.attitude.roll + (Double.pi / 2.5)) * 750
                         
                         
-                        let tolerance = 0.15
+                        let tolerance = 0.2
                         self.turnSpeed = 0
                         if abs(mydata.attitude.pitch) > tolerance{
                             if mydata.attitude.pitch > 0{
-                                self.turnSpeed = (mydata.attitude.pitch - tolerance) * -0.3
+                                self.turnSpeed = (mydata.attitude.pitch - tolerance) * -0.25
                             }
                             else{
-                                self.turnSpeed = (mydata.attitude.pitch + tolerance) * -0.3
+                                self.turnSpeed = (mydata.attitude.pitch + tolerance) * -0.25
                             }
                             
                         }
@@ -125,9 +145,9 @@ class GameScene: SKScene {
         let bulletPhysics = SKPhysicsBody(rectangleOf: CGSize(width: bullet.size.width, height: bullet.size.height))
         let bulletSpeed: CGFloat = 750
         bulletPhysics.isDynamic = true
-        bulletPhysics.categoryBitMask = 0b10
-        bulletPhysics.contactTestBitMask = 0b10
-        bulletPhysics.collisionBitMask = 0b10
+        bulletPhysics.categoryBitMask = bulletCategory
+        bulletPhysics.contactTestBitMask = asteroidCategory
+        bulletPhysics.collisionBitMask = asteroidCategory
         bulletPhysics.allowsRotation = false
         bulletPhysics.affectedByGravity = false
         bulletPhysics.friction = 0
@@ -144,6 +164,29 @@ class GameScene: SKScene {
 //        bullet.run(SKAction.repeatForever(action))
         
         self.addChild(bullet)
+    }
+    
+    
+    // create asteroid spawn
+    func addAsteroid () {
+        
+        possibleAsteroids = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAsteroids) as! [String]
+        let asteroid = SKSpriteNode(imageNamed: possibleAsteroids[0])
+        let randomAsteroidPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(self.frame.maxX))
+        let position = CGFloat(randomAsteroidPosition.nextInt())
+        asteroid.position = CGPoint(x: position, y: self.frame.size.height + asteroid.size.height)
+        asteroid.physicsBody = SKPhysicsBody(rectangleOf: asteroid.size)
+        asteroid.physicsBody?.isDynamic = true
+        asteroid.physicsBody?.categoryBitMask = asteroidCategory
+        asteroid.physicsBody?.contactTestBitMask = bulletCategory
+        asteroid.physicsBody?.collisionBitMask = bulletCategory
+        self.addChild(asteroid)
+        let animationDuration:TimeInterval = 10
+        var actionArray = [SKAction]()
+        actionArray.append(SKAction.move(to: CGPoint(x: position, y: -asteroid.size.height), duration: animationDuration))
+        actionArray.append(SKAction.removeFromParent())
+        asteroid.run(SKAction.sequence(actionArray))
+        
     }
     
     
@@ -173,4 +216,11 @@ class GameScene: SKScene {
         player.physicsBody?.velocity = CGVector(dx: sin(-1*angle) * shipSpeed, dy: cos(-1*angle)*shipSpeed)
         player.zRotation += CGFloat(turnSpeed)
     }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        contact.bodyA.node?.removeFromParent()
+        contact.bodyB.node?.removeFromParent()
+        print("contact")
+    }
+    
 }
